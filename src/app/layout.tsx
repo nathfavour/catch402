@@ -11,8 +11,8 @@ import { CapitalProvider } from '@/contexts/CapitalContext'
 import LayoutClient from './layoutClient'
 
 export const metadata: Metadata = {
-  title: 'Pay by Web3Lancer',
-  description: 'Decentralized payment platform for the Web5 economy',
+  title: 'SettleDaddy',
+  description: 'The payment rails for the agentic era.',
 }
 
 export default function RootLayout({

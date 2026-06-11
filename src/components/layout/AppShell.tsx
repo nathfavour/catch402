@@ -14,7 +14,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
   const { isSidebarOpen, toggleSidebar } = useSidebar()
 
   return (
-    <div className="flex flex-col h-screen bg-neutral-50 dark:bg-ash-dark transition-colors duration-300">
+    <div className="flex flex-col h-screen bg-void text-white">
       {/* TopBar */}
       <TopBar onMenuClick={toggleSidebar} mobile={false} />
 
@@ -24,7 +24,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children }) => {
         <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
 
         {/* Main Content Area */}
-        <div className="flex flex-col flex-1 min-w-0">
+        <div className="flex flex-col flex-1 min-w-0 bg-void">
           <main className="flex-1 overflow-y-auto pb-16 lg:pb-0">
             {children}
           </main>
