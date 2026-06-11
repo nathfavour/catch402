@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Production Ready | **Build**: ✅ Clean | **Quality**: Enterprise-Grade
 
-PayLancer's innovative Capital Hub feature is now live, empowering Web3 freelancers to unlock credit using their Bitcoin as collateral without selling it.
+SettleDaddy's innovative Capital Hub feature is now live, empowering Web3 freelancers to unlock credit using their Bitcoin as collateral without selling it.
 
 ---
 

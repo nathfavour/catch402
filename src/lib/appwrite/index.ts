@@ -1,6 +1,6 @@
 /**
  * Appwrite Library - Main Export
- * Provides all Appwrite/PayDB operations for PayLancer Capital
+ * Provides all Appwrite/PayDB operations for SettleDaddy Capital
  */
 
 // Core client

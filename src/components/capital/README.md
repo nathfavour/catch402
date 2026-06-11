@@ -2,7 +2,7 @@
 
 ## Overview
 
-Capital Hub is PayLancer's innovative financial feature that empowers Web3 freelancers to unlock credit using their Bitcoin as collateral, without selling it. This feature integrates with the Mezo protocol to provide collateralized borrowing in MUSD (Mezo USD stablecoin).
+Capital Hub is SettleDaddy's innovative financial feature that empowers Web3 freelancers to unlock credit using their Bitcoin as collateral, without selling it. This feature integrates with the Mezo protocol to provide collateralized borrowing in MUSD (Mezo USD stablecoin).
 
 ## Features
 
@@ -188,4 +188,4 @@ NEXT_PUBLIC_MEZO_CONTRACT_ADDRESS=0x...
 
 - [Mezo Documentation](https://docs.mezo.io)
 - [PRD](../../docx/prd.md)
-- [PayLancer README](../../README.md)
+- [SettleDaddy README](../../README.md)

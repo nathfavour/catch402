@@ -7,12 +7,10 @@ export function AppThemeProvider({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
-      enableSystem
-      disableTransitionOnChange={false}
-      forcedTheme={undefined}
-      enableColorScheme={false}
-      storageKey="app-theme"
+      defaultTheme="dark"
+      enableSystem={false}
+      forcedTheme="dark"
+      storageKey="sd-theme"
     >
       {children}
     </ThemeProvider>

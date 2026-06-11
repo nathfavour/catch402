@@ -159,7 +159,7 @@ export default function UserProfilePage() {
           <button
             className="mt-2 flex items-center gap-2 px-5 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-full font-medium shadow transition-colors"
             onClick={() => window.open(messageLink, '_blank', 'noopener')}
-            title="Message on Web3Lancer"
+            title="Message on SettleDaddy"
             type="button"
           >
             <FiMessageCircle className="w-5 h-5" />

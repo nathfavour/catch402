@@ -1,4 +1,4 @@
-// Utility functions for Web3Lancer Pay
+// Utility functions for SettleDaddy Pay
 
 export const truncateString = (str: string, startChars: number = 6, endChars: number = 4): string => {
   if (str.length <= startChars + endChars) {

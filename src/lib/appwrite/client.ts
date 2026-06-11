@@ -1,6 +1,6 @@
 /**
  * Appwrite TablesDB Client Configuration
- * Supports PayDB (683a31960011608eaee5) for PayLancer Capital
+ * Supports PayDB (683a31960011608eaee5) for SettleDaddy Capital
  */
 
 'use client'

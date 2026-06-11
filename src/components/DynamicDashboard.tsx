@@ -60,7 +60,7 @@ const DynamicDashboard: React.FC = () => {
         <section className={`pt-32 pb-20 px-6 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Web3Lancer Pay
+              SettleDaddy Pay
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
@@ -104,7 +104,7 @@ const DynamicDashboard: React.FC = () => {
         <section className="py-20 px-6">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Why Choose Web3Lancer Pay?
+              Why Choose SettleDaddy Pay?
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -1,6 +1,9 @@
+'use client'
+
 import React from 'react'
 import { useExchangeRate } from '@/contexts/ExchangeRateContext'
-import { FiTrendingUp, FiTrendingDown, FiRefreshCw } from 'react-icons/fi'
+import { TrendingUp, TrendingDown, RefreshCw } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface ExchangeRateDisplayProps {
   className?: string
@@ -28,54 +31,60 @@ export function ExchangeRateDisplay({ className = '', showRefresh = false }: Exc
   }
 
   return (
-    <div className={`bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 p-6 shadow-lg shadow-neutral-300/40 dark:shadow-neutral-950/40 ${className}`}>
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-neutral-900 dark:text-blue-100">Live Prices</h3>
+    <div className={cn(
+      "bg-bedrock border border-hairline rounded p-6 space-y-6",
+      className
+    )}>
+      <div className="flex items-center justify-between">
+        <h3 className="text-xs font-medium text-neutral-500 uppercase tracking-widest">Market Rates</h3>
         <div className="flex items-center space-x-2">
-          <span className="text-xs text-neutral-500 dark:text-neutral-400">
-            Updated {formatLastUpdated()}
+          <span className="text-[10px] text-neutral-600 uppercase">
+            {formatLastUpdated()}
           </span>
           {showRefresh && (
             <button
               onClick={handleRefresh}
               disabled={isLoading}
-              className="p-1 text-neutral-400 dark:text-neutral-500 hover:text-neutral-600 dark:hover:text-neutral-400 disabled:animate-spin"
+              className="p-1 text-neutral-500 hover:text-white disabled:animate-spin transition-colors"
             >
-              <FiRefreshCw className="w-4 h-4" />
+              <RefreshCw className="w-3 h-3" />
             </button>
           )}
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         {Object.values(rates).slice(0, 6).map((rate) => {
           if (!rate?.price_usd) return null
           const priceChange = formatPriceChange(rate.price_change_24h)
           const isPositive = rate.price_change_24h >= 0
 
           return (
-            <div key={rate.tokenId} className="flex items-center justify-between">
+            <div key={rate.tokenId} className="flex items-center justify-between group">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold">
+                <div className="w-8 h-8 rounded bg-chrome border border-hairline flex items-center justify-center text-white text-xs font-bold group-hover:border-primary/50 transition-colors">
                   {rate.symbol.slice(0, 2)}
                 </div>
                 <div>
-                  <div className="font-medium text-neutral-900 dark:text-blue-100">{rate.symbol}</div>
-                  <div className="text-sm text-neutral-500 dark:text-neutral-400">{rate.name}</div>
+                  <div className="text-sm font-bold text-white tracking-tight">{rate.symbol}</div>
+                  <div className="text-[10px] text-neutral-500 uppercase tracking-tighter">{rate.name}</div>
                 </div>
               </div>
               <div className="text-right">
-                <div className="font-medium text-neutral-900 dark:text-blue-100">
+                <div className="text-sm font-bold text-white tracking-tight">
                   ${rate.price_usd.toLocaleString(undefined, { 
                     minimumFractionDigits: rate.price_usd < 1 ? 4 : 2,
                     maximumFractionDigits: rate.price_usd < 1 ? 6 : 2 
                   })}
                 </div>
-                <div className={`text-sm flex items-center ${priceChange.color}`}>
+                <div className={cn(
+                  "text-[10px] font-bold flex items-center justify-end",
+                  isPositive ? "text-success" : "text-error"
+                )}>
                   {isPositive ? (
-                    <FiTrendingUp className="w-3 h-3 mr-1" />
+                    <TrendingUp className="w-3 h-3 mr-1" />
                   ) : (
-                    <FiTrendingDown className="w-3 h-3 mr-1" />
+                    <TrendingDown className="w-3 h-3 mr-1" />
                   )}
                   {priceChange.text}
                 </div>
@@ -86,11 +95,8 @@ export function ExchangeRateDisplay({ className = '', showRefresh = false }: Exc
       </div>
 
       {isLoading && (
-        <div className="mt-4 text-center text-sm text-neutral-500 dark:text-neutral-400">
-          <div className="inline-flex items-center">
-            <FiRefreshCw className="w-4 h-4 mr-2 animate-spin" />
-            Updating prices...
-          </div>
+        <div className="text-center text-[10px] text-neutral-500 uppercase tracking-widest animate-pulse">
+          Syncing with global rails...
         </div>
       )}
     </div>
@@ -112,21 +118,21 @@ export function TokenSelect({ selectedToken, onTokenSelect, className = '', labe
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-neutral-700 mb-2">
+        <label className="block text-xs font-medium text-neutral-500 uppercase tracking-widest mb-2">
           {label}
         </label>
       )}
       <select
         value={selectedToken}
         onChange={(e) => onTokenSelect(e.target.value)}
-        className="w-full px-3 py-2 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent shadow-sm shadow-neutral-200/40"
+        className="w-full bg-chrome border border-hairline rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-primary/50 transition-colors appearance-none cursor-pointer"
       >
-        <option value="">Select a token</option>
+        <option value="">Select Asset</option>
         {availableTokens.map((tokenId) => {
           const rate = getRate(tokenId)
           return (
             <option key={tokenId} value={tokenId}>
-              {rate?.symbol} - {rate?.name} ({formatUsdValue(rate?.price_usd || 0)})
+              {rate?.symbol} ({formatUsdValue(rate?.price_usd || 0)})
             </option>
           )
         })}

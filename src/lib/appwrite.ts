@@ -15,7 +15,7 @@ export const avatars = new Avatars(client)
 export const functions = new Functions(client)
 export { ID, Query }
 
-// PayDB (new TablesDB) - primary database for PayLancer
+// PayDB (new TablesDB) - primary database for SettleDaddy
 export const PAYDB_ID = process.env.NEXT_PUBLIC_PAYDB_ID!
 
 // FinanceDB - database for wallet and financial data

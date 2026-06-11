@@ -101,7 +101,7 @@ async function authenticateWithPasskey(email: string) {
 **User clicks "Sign in with Passkey"**
 
 1. ✅ Check passkeys → None found
-2. ✅ Browser shows: "Create a passkey for LancerPay"
+2. ✅ Browser shows: "Create a passkey for SettleDaddy"
 3. ✅ User uses fingerprint/Face ID
 4. ✅ Passkey created + logged in
 5. ✅ Toast: "✅ Passkey created! You're signed in!"
@@ -115,7 +115,7 @@ async function authenticateWithPasskey(email: string) {
 **User clicks "Sign in with Passkey"**
 
 1. ✅ Check passkeys → Found existing passkey
-2. ✅ Browser shows: "Sign in to LancerPay"
+2. ✅ Browser shows: "Sign in to SettleDaddy"
 3. ✅ User uses fingerprint/Face ID
 4. ✅ Authenticated with existing passkey
 5. ✅ Toast: "✅ Signed in with passkey!"

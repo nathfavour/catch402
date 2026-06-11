@@ -103,7 +103,7 @@ export default function HelpPage() {
             <div>
               <h3 className="font-semibold text-blue-900 mb-2">Need more help?</h3>
               <p className="text-blue-800">
-                Visit our comprehensive documentation or community forums for more detailed information about using LancerPay.
+                Visit our comprehensive documentation or community forums for more detailed information about using SettleDaddy.
               </p>
             </div>
           </div>

@@ -25,7 +25,7 @@ export function PitchClient() {
   const slides: Slide[] = [
     {
       id: 0,
-      title: "LancerPay",
+      title: "SettleDaddy",
       subtitle: "The Future of Digital Payments",
       bgGradient: "from-slate-900 via-blue-900 to-purple-900",
       textColor: "text-white",
@@ -39,7 +39,7 @@ export function PitchClient() {
           >
             <Image
               src="/images/logo.png"
-              alt="LancerPay"
+              alt="SettleDaddy"
               width={128}
               height={128}
               className="rounded-3xl shadow-2xl"

@@ -12,7 +12,7 @@ export const Header: React.FC = () => {
               </div>
             </div>
             <div className="ml-3">
-              <span className="text-lg font-semibold text-gray-900">Web3Lancer Pay</span>
+              <span className="text-lg font-semibold text-gray-900">SettleDaddy Pay</span>
             </div>
           </div>
 

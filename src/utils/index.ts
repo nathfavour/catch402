@@ -1,4 +1,4 @@
-// Utility functions for Web3Lancer Pay
+// Utility functions for SettleDaddy Pay
 
 export const formatCurrency = (amount: number, currency: string = 'USD'): string => {
   return new Intl.NumberFormat('en-US', {

@@ -25,7 +25,7 @@ const Header: React.FC = () => {
             <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">W3</span>
             </div>
-            <span className="text-white font-bold text-xl">Web3Lancer Pay</span>
+            <span className="text-white font-bold text-xl">SettleDaddy Pay</span>
           </Link>
 
           {/* Desktop Navigation */}

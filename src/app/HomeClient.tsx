@@ -30,7 +30,7 @@ export function HomeClient() {
         <div className="bg-white shadow rounded-lg mb-8">
           <div className="px-6 py-4 border-b border-neutral-200 flex justify-between items-center">
             <h1 className="text-2xl font-bold text-neutral-900">
-              {isAuthenticated ? 'Dashboard' : 'Welcome to LancerPay'}
+              {isAuthenticated ? 'Dashboard' : 'Welcome to SettleDaddy'}
             </h1>
             {isAuthenticated && (
               <button
@@ -91,7 +91,7 @@ export function HomeClient() {
         {/* Welcome Message */}
         <div className="bg-primary-50 border border-primary-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-primary-900 mb-2">
-            {isAuthenticated ? 'Welcome back!' : 'Welcome to Pay by Web3Lancer!'}
+            {isAuthenticated ? 'Welcome back!' : 'Welcome to Pay by SettleDaddy!'}
           </h3>
           <p className="text-primary-700">
             {isAuthenticated 

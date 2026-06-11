@@ -324,7 +324,7 @@ export function PaymentProfile({
                 rel="noopener noreferrer"
                 className="text-primary-600 hover:text-primary-700"
               >
-                Web3Lancer
+                SettleDaddy
               </a>
             </p>
           </div>

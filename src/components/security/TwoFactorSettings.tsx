@@ -38,7 +38,7 @@ export function TwoFactorSettings({ onClose }: TwoFactorSettingsProps) {
       setSecretKey(secret)
       
       // Create QR code URL for authenticator apps
-      const appName = 'Pay by Web3Lancer'
+      const appName = 'Pay by SettleDaddy'
       const userEmail = user.email
       const qrUrl = `otpauth://totp/${encodeURIComponent(appName)}:${encodeURIComponent(userEmail)}?secret=${secret}&issuer=${encodeURIComponent(appName)}`
       setQrCodeUrl(qrUrl)
