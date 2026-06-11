@@ -70,7 +70,7 @@ export default function CreateWalletPage() {
       }
 
       // Prepare input for Appwrite function
-      let functionInput: any = {
+      const functionInput: any = {
         walletType: formData.walletType === 'hot' ? 'inbuilt' : formData.walletType,
         blockchain: formData.blockchain,
         walletPassword,

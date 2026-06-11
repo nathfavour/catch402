@@ -7,7 +7,7 @@ const requiredEnvVars = [
 ];
 for (const envVar of requiredEnvVars) {
   if (!process.env[envVar] || typeof process.env[envVar] !== 'string') {
-    // eslint-disable-next-line no-console
+     
     console.error(`[Startup] Missing required environment variable: ${envVar}`);
     throw new Error(`Missing required environment variable: ${envVar}`);
   }
