@@ -1,40 +1,21 @@
-# 🚀 PayLancer
+# 🚀 SettleDaddy
 
-**The next-gen payment platform for freelancers, creators, businesses, and the web3 world.**
+**The payment rails for the agentic era.**
 
-![PayLancer Dashboard](https://placehold.co/1200x600/0F172A/34D399?text=PayLancer+Capital)
+![SettleDaddy Dashboard](https://placehold.co/1200x600/000000/FFFFFF?text=SettleDaddy)
 
-PayLancer is a professional-grade platform designed to fix cross-border payment delays, high transaction fees, and complex freelancer payment flows. We provide an API-first, secure architecture for instant, low-fee transfers.
-
----
-
-## ✨ PayLancer Capital (Mezo Hackathon Focus)
-
-For the Mezo Hackathon, we've built **PayLancer Capital**—a transformative feature that solves our users' single biggest pain point: cash flow.
-
-Freelancers are often asset-rich (in Bitcoin) but cash-poor. Instead of forcing them to sell their best asset to cover expenses, PayLancer Capital allows them to collateralize their BTC and instantly borrow MUSD at a 1% fixed rate. We are turning static Bitcoin into productive working capital.
-
-### How It Works
-
-1.  **Hold BTC:** Freelancers hold their Bitcoin in their trusted PayLancer account or connected wallet.
-2.  **Get Advance:** With one click, they access a credit line and borrow MUSD against their BTC using Mezo's secure protocol.
-3.  **Spend Instantly:** They receive stable MUSD to cover rent, expenses, and new equipment, all without selling their Bitcoin.
-
-### Integrations
-
-Paylancer capital is powered by **Spectrum** and **Boar**, all integrations in src/integrations/mezo/providers
+SettleDaddy is a professional-grade payment engine designed to fix cross-border payment delays, high transaction fees, and complex payment flows for the agentic era. Built entirely on the Next.js and Appwrite stack, it provides an API-first, secure architecture for instant, low-fee transfers, designed to be as powerful as products like BTCPayServer but without the unnecessary complexity.
 
 ---
 
-## Key Features
+## ✨ Features
 
--   🌐 **Global Payments:** Send, receive, and manage crypto & fiat.
--   ⚡ **Capital Advance:** Instantly borrow MUSD against your Bitcoin (Powered by Mezo).
--   🔒 **Secure:** 2FA, KYC (optional), and advanced security logs.
--   🪄 **Modern UI:** Beautiful, interactive experience built with React 19.
--   🛡️ **Robust Backend:** Powered by Appwrite for real-time updates and auth.
+-   🌐 **Agentic Rails:** Built-in support for AI agents to trigger and manage payments autonomously.
+-   ⚡ **Settle Fast:** Instant settlements using modern payment protocols.
+-   🔒 **Secure:** Passkey-first authentication and advanced security logs.
+-   🪄 **OpenBricks Design:** A beautiful, pitch-dark, tactile UI built with Tailwind v4.
+-   🛡️ **Robust Backend:** Powered by Appwrite for real-time updates and secure data management.
 -   📱 **Fully Responsive:** Works seamlessly on all devices.
--   🧑‍💻 **Open Source:** Built for the community, by the community.
 
 ---
 
@@ -42,62 +23,47 @@ Paylancer capital is powered by **Spectrum** and **Boar**, all integrations in s
 
 ```bash
 # 1. Clone the repo
-$git clone [https://github.com/web3lancer/pay.git](https://github.com/web3lancer/pay.git)
-$ cd pay
+$ git clone https://github.com/nathfavour/Settle-Daddy-Core.git
+$ cd Settle-Daddy-Core
 
 # 2. Install dependencies
-$ pnpm install
+$ npm install
 
 # 3. Copy and edit your .env
 $ cp env.sample .env
-# (Fill in your Appwrite and API keys)
 
 # 4. Start the dev server
-$ pnpm dev
-
+$ npm run dev
 ```
+
 ---
 
 ## Tech Stack
 
 -   **Next.js 15** + **React 19**
 -   **Appwrite** (Auth, DB, Storage, Realtime)
--   **Mezo (npm package)** (Bitcoin-backed borrowing)
--   **Tailwind CSS** + **Framer Motion**
+-   **Tailwind CSS v4** + **Framer Motion**
 -   **TypeScript**
 -   **Zustand** (state management)
--   **Recharts** (visualizations)
--   **Dexie** (IndexedDB)
 
 ---
 
-## Roadmap
+## Architecture Mandates
 
--   [x] Email/password & OAuth login
--   [x] Animated dashboard & onboarding
--   [x] Multi-currency wallet support
--   [x] KYC & 2FA security
--   [x] Invoicing & payment requests
--   [x] **Mezo Testnet Integration (Hackathon Demo)**
--   [ ] **Mezo Mainnet Launch (Q1 2026)**
--   [ ] **Full Loan Management (Repay, Top-up) (Q2 2026)**
--   [ ] **MUSD Auto-Repay with Yield (Q3 2026)**
--   [ ] Token swaps & on/off ramp
--   [ ] Mobile app (PWA)
--   [ ] Marketplace for freelancers
+SettleDaddy follows strict architectural principles inspired by [Kylrix](https://github.com/kylrix/kylrix):
+
+-   **No internal APIs:** We use Server Actions and internal service methods to minimize attack surface and latency.
+-   **Terminology:** We use **"Table"** instead of "Collection" and **"Row"** instead of "Document" to align with a more intuitive database mental model.
+-   **Pitch-Dark Sanctuary:** A dark-mode-only system using the OpenBricks 2.0 design framework.
 
 ---
 
 ## Contributing
 
-We welcome PRs, issues, and ideas! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
--   Star ⭐ the repo
--   Fork & PR
--   Join our [Discord](https://discord.gg/B8efmXtE)
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ---
 
 ## License
 
-MIT © [web3lancer](https://github.com/web3lancer)
+MIT © [nathfavour](https://github.com/nathfavour)
