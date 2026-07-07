@@ -76,9 +76,9 @@ export function TopBar({ onMenuClick, mobile = false }: TopBarProps) {
         {/* Logo and App Name */}
         <Link href="/home" className="flex items-center gap-2">
           <div className="h-8 w-8 bg-primary rounded flex items-center justify-center">
-             <span className="text-white font-bold text-sm">SD</span>
+             <span className="text-white font-bold text-sm">C4</span>
           </div>
-          <span className="font-bold text-white tracking-tight text-lg">SettleDaddy</span>
+          <span className="font-bold text-white tracking-tight text-lg">Catch402</span>
         </Link>
       </div>
 

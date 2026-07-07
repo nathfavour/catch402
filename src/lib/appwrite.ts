@@ -3,9 +3,12 @@ import { Client, Account, TablesDB, Storage, ID, Query, Avatars, AuthenticationF
 // Initialize Appwrite client
 const client = new Client()
 
+const endpoint = process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || 'https://localhost/v1'
+const projectId = process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || 'project-id'
+
 client
-  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!)
+  .setEndpoint(endpoint)
+  .setProject(projectId)
 
 // Initialize services
 export const account = new Account(client)

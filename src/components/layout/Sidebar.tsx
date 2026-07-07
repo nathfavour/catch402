@@ -80,11 +80,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <div className="px-4 py-4 border-t border-hairline flex-shrink-0 bg-chrome">
           <div className="flex items-center">
             <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xs">SD</span>
+              <span className="text-white font-bold text-xs">C4</span>
             </div>
             <div className="ml-3">
-              <p className="text-sm font-medium text-white">SettleDaddy</p>
-              <p className="text-[10px] text-neutral-500 uppercase tracking-widest">Agentic Rails</p>
+              <p className="text-sm font-medium text-white">Catch402</p>
+              <p className="text-[10px] text-neutral-500 uppercase tracking-widest">Telemetry Router</p>
             </div>
           </div>
         </div>

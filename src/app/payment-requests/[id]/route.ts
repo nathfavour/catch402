@@ -1,23 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import * as appwrite from '@/lib/appwrite'
 
-// Defensive: Ensure required environment variables are set at runtime
-const requiredEnvVars = [
-  'NEXT_PUBLIC_APPWRITE_ENDPOINT'
-];
-for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar] || typeof process.env[envVar] !== 'string') {
-     
-    console.error(`[Startup] Missing required environment variable: ${envVar}`);
-    throw new Error(`Missing required environment variable: ${envVar}`);
-  }
-}
-
 // GET /api/payment-requests/[id] - Get payment request for bridge
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // Defensive: Ensure required environment variables are set at runtime
+  const requiredEnvVars = [
+    'NEXT_PUBLIC_APPWRITE_ENDPOINT'
+  ];
+  for (const envVar of requiredEnvVars) {
+    if (!process.env[envVar] || typeof process.env[envVar] !== 'string') {
+      console.error(`[Startup] Missing required environment variable: ${envVar}`);
+      return NextResponse.json({ error: `Missing required environment variable: ${envVar}` }, { status: 500 });
+    }
+  }
+
   try {
     const requestId = params.id
     const paymentRequest = await appwrite.getPaymentRequest(requestId)

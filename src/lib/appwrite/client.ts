@@ -9,8 +9,8 @@ import { Client, TablesDB, Account } from 'appwrite'
 
 // Initialize Appwrite client with TablesDB
 const client = new Client()
-  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID!)
+  .setEndpoint(process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT || 'https://localhost/v1')
+  .setProject(process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID || 'project-id')
 
 export const account = new Account(client)
 export const tablesdb = new TablesDB(client)

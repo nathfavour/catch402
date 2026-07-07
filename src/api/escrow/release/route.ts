@@ -1,24 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import * as appwrite from '@/lib/appwrite'
 
-// Defensive: Ensure required environment variables are set at runtime
-const requiredEnvVars = [
-  'BRIDGE_API_KEY',
-  'NEXT_PUBLIC_APPWRITE_ENDPOINT', // Add this
-  // Add any other Appwrite env vars you use, e.g.:
-  // 'APPWRITE_PROJECT_ID',
-  // 'APPWRITE_API_KEY',
-];
-for (const envVar of requiredEnvVars) {
-  if (!process.env[envVar] || typeof process.env[envVar] !== 'string') {
-     
-    console.error(`[Startup] Missing required environment variable: ${envVar}`);
-    throw new Error(`Missing required environment variable: ${envVar}`);
-  }
-}
-
 // POST /api/escrow/release - Handle escrow release notifications from bridge
 export async function POST(request: NextRequest) {
+  // Defensive: Ensure required environment variables are set at runtime
+  const requiredEnvVars = [
+    'BRIDGE_API_KEY',
+    'NEXT_PUBLIC_APPWRITE_ENDPOINT',
+  ];
+  for (const envVar of requiredEnvVars) {
+    if (!process.env[envVar] || typeof process.env[envVar] !== 'string') {
+      console.error(`[Startup] Missing required environment variable: ${envVar}`);
+      return NextResponse.json({ error: `Missing required environment variable: ${envVar}` }, { status: 500 });
+    }
+  }
+
   try {
     const { escrowId, transactionHash, milestoneId, network, timestamp } = await request.json()
     
