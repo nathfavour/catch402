@@ -4,11 +4,25 @@
  */
 
 // ===========================
+// Appwrite TablesDB Row Base
+// All table row types must extend this to satisfy TablesDB.listRows<T extends Row>
+// ===========================
+
+export interface Row {
+  $id: string
+  $sequence: string
+  $tableId: string
+  $databaseId: string
+  $createdAt: string
+  $updatedAt: string
+  $permissions: string[]
+}
+
+// ===========================
 // PayDB Types
 // ===========================
 
-export interface PayDBUser {
-  $id: string
+export interface PayDBUser extends Row {
   userId: string
   email: string
   username: string
@@ -27,13 +41,9 @@ export interface PayDBUser {
   // Relationships
   paymentRequests?: string | string[]
   aPIKeys?: string | string[]
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface PayDBToken {
-  $id: string
+export interface PayDBToken extends Row {
   tokenId: string
   symbol: string
   name: string
@@ -48,13 +58,9 @@ export interface PayDBToken {
   priceChange24h?: number
   lastPriceUpdate?: string
   createdAt: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface PayDBPaymentRequest {
-  $id: string
+export interface PayDBPaymentRequest extends Row {
   requestId: string
   fromUserId: string
   toUserId?: string
@@ -71,13 +77,9 @@ export interface PayDBPaymentRequest {
   paidAt?: string
   // Relationships
   users?: string | string[]
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface PayDBExchangeRate {
-  $id: string
+export interface PayDBExchangeRate extends Row {
   rateId: string
   fromCurrency: string
   toCurrency: string
@@ -85,13 +87,9 @@ export interface PayDBExchangeRate {
   source: string
   lastUpdated: string
   isActive?: boolean
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface PayDBAPIKey {
-  $id: string
+export interface PayDBAPIKey extends Row {
   keyId: string
   userId: string
   keyName: string
@@ -104,13 +102,9 @@ export interface PayDBAPIKey {
   createdAt: string
   // Relationships
   users?: string | string[]
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface PayDBVirtualCard {
-  $id: string
+export interface PayDBVirtualCard extends Row {
   cardId: string
   userId: string
   cardNumber: string
@@ -121,13 +115,9 @@ export interface PayDBVirtualCard {
   linkedWalletId?: string
   createdAt?: string
   updatedAt?: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface PayDBVirtualAccount {
-  $id: string
+export interface PayDBVirtualAccount extends Row {
   accountId: string
   userId: string
   accountNumber: string
@@ -137,17 +127,13 @@ export interface PayDBVirtualAccount {
   linkedWalletId?: string
   createdAt?: string
   updatedAt?: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
 // ===========================
 // ProfilesDB Types
 // ===========================
 
-export interface ProfilesDBProfile {
-  $id: string
+export interface ProfilesDBProfile extends Row {
   userId: string
   name: string
   email: string
@@ -167,13 +153,9 @@ export interface ProfilesDBProfile {
   verificationStatus?: 'unverified' | 'pending' | 'verified'
   rating?: number
   reviewCount?: number
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface ProfilesDBProfileVerification {
-  $id: string
+export interface ProfilesDBProfileVerification extends Row {
   profileId: string
   verificationType: string
   documentFileIds?: string[]
@@ -182,57 +164,38 @@ export interface ProfilesDBProfileVerification {
   submittedAt?: string
   reviewedAt?: string
   reviewedBy?: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
 // ===========================
 // CoreDB Types
 // ===========================
 
-export interface CoreDBSkill {
-  $id: string
+export interface CoreDBSkill extends Row {
   name: string
   category?: string
   description?: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface CoreDBCategory {
-  $id: string
+export interface CoreDBCategory extends Row {
   name: string
   description?: string
   parentCategory?: string
   icon?: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
-export interface CoreDBPlatformSettings {
-  $id: string
+export interface CoreDBPlatformSettings extends Row {
   key: string
   value: string
   description?: string
   category?: string
   isPublic?: boolean
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
 }
 
 // ===========================
 // Generic Row Type
 // ===========================
 
-export interface TableDBRow {
-  $id: string
-  $permissions?: string[]
-  $createdAt?: string
-  $updatedAt?: string
+export interface TableDBRow extends Row {
   [key: string]: any
 }
 
@@ -274,5 +237,5 @@ export interface TableDBOperation {
 // Helper Types
 // ===========================
 
-export type CreateRowData<T> = Omit<T, '$id' | '$permissions' | '$createdAt' | '$updatedAt'>
+export type CreateRowData<T> = Omit<T, '$id' | '$sequence' | '$tableId' | '$databaseId' | '$permissions' | '$createdAt' | '$updatedAt'>
 export type UpdateRowData<T> = Partial<CreateRowData<T>>
