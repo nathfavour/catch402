@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catch402 | Payment Required</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Hanken+Grotesk:wght@400;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #141312;
+      color: #e6e1df;
+      overflow: hidden;
+    }
+    .hard-shadow {
+      box-shadow: 1px 1px 0px #23211F, 2px 2px 0px #141211;
+    }
+    .pressed {
+      transform: translate(2px, 2px);
+      box-shadow: none !important;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0A0908;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #23211F;
+    }
+    .amber-glow {
+      box-shadow: inset 0 0 4px #ff8800;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "primary-fixed-dim": "#ffb781",
+                  "tertiary-container": "#00b2fd",
+                  "secondary-fixed": "#e7e1de",
+                  "on-error": "#690005",
+                  "error-container": "#93000a",
+                  "surface-container": "#211f1e",
+                  "primary-fixed": "#ffdcc4",
+                  "outline-variant": "#574335",
+                  "on-primary-container": "#613000",
+                  "on-primary": "#4e2600",
+                  "surface-variant": "#363433",
+                  "on-secondary-fixed": "#1d1b19",
+                  "on-secondary": "#32302e",
+                  "on-surface": "#e6e1df",
+                  "tertiary": "#8aceff",
+                  "on-primary-fixed-variant": "#6f3800",
+                  "surface-bright": "#3b3937",
+                  "primary": "#ffb781",
+                  "tertiary-fixed": "#c9e6ff",
+                  "on-tertiary-fixed-variant": "#004c6e",
+                  "inverse-on-surface": "#32302f",
+                  "surface-container-lowest": "#0f0e0d",
+                  "on-error-container": "#ffdad6",
+                  "surface-dim": "#141312",
+                  "secondary-fixed-dim": "#cbc5c2",
+                  "surface-container-highest": "#363433",
+                  "surface-tint": "#ffb781",
+                  "secondary": "#cbc5c2",
+                  "on-primary-fixed": "#2f1400",
+                  "error": "#ffb4ab",
+                  "surface-container-low": "#1d1b1a",
+                  "on-surface-variant": "#dec1ae",
+                  "inverse-surface": "#e6e1df",
+                  "on-secondary-container": "#bcb7b4",
+                  "background": "#141312",
+                  "outline": "#a58c7b",
+                  "on-background": "#e6e1df",
+                  "on-tertiary": "#00344d",
+                  "on-tertiary-container": "#004160",
+                  "inverse-primary": "#924c00",
+                  "primary-container": "#ff8800",
+                  "secondary-container": "#4b4846",
+                  "surface": "#141312",
+                  "on-secondary-fixed-variant": "#494644",
+                  "surface-container-high": "#2b2a28",
+                  "on-tertiary-fixed": "#001e2f",
+                  "tertiary-fixed-dim": "#8aceff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "stack-sm": "8px",
+                  "gutter-mobile": "16px",
+                  "stack-xl": "48px",
+                  "margin-desktop": "40px",
+                  "stack-lg": "24px",
+                  "stack-xs": "4px",
+                  "stack-md": "16px",
+                  "margin-mobile": "20px",
+                  "gutter-desktop": "24px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Outfit"],
+                  "label-caps": ["Space Grotesk"],
+                  "headline-lg": ["Outfit"],
+                  "input-text": ["Space Grotesk"],
+                  "body-md": ["Hanken Grotesk"],
+                  "technical-sm": ["JetBrains Mono"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-surface-dim">
+<!-- Background Canvas Mockup -->
+<div class="fixed inset-0 z-0 overflow-hidden opacity-20 pointer-events-none">
+<div class="grid grid-cols-12 gap-gutter-desktop h-full w-full px-margin-desktop py-stack-xl">
+<div class="col-span-8 bg-surface-container-low rounded-xl border border-outline-variant"></div>
+<div class="col-span-4 bg-surface-container-low rounded-xl border border-outline-variant"></div>
+</div>
+</div>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 z-10 bg-surface-dim/80 backdrop-blur-sm"></div>
+<!-- Challenge Modal Container -->
+<div class="relative z-20 w-full max-w-[560px] px-gutter-mobile md:px-0" id="modal">
+<div class="bg-surface-container-high border border-outline-variant hard-shadow rounded-xl p-stack-lg flex flex-col gap-stack-lg transition-transform duration-100">
+<!-- Header Section -->
+<div class="flex items-start gap-stack-md">
+<div class="flex-shrink-0 w-12 h-12 bg-surface-container-highest border border-outline-variant rounded-lg flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[32px]">error</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Payment Required</h1>
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-widest mt-1">Status Code 402 challenge</p>
+</div>
+</div>
+<!-- Challenge Content -->
+<div class="flex flex-col gap-stack-md">
+<!-- Technical Label -->
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-tighter">Payload Manifest v1.4.2</span>
+<div class="flex gap-stack-xs">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div>
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+<!-- JSON Code Block -->
+<div class="bg-surface-container-lowest border border-[#23211F] rounded-lg p-stack-md overflow-hidden relative">
+<pre class="font-technical-sm text-technical-sm text-[#10B981] overflow-x-auto custom-scrollbar leading-relaxed"><code>{
+  "status": 402,
+  "challenge": "x402_L1_CHALLENGE",
+  "amount": "0.0042",
+  "currency": "SAT",
+  "timestamp": 1709234851,
+  "target": "npub1...trun"
+}</code></pre>
+<div class="absolute top-2 right-2 flex gap-2">
+<div class="w-1 h-4 bg-outline-variant/30"></div>
+<div class="w-1 h-4 bg-outline-variant/30"></div>
+</div>
+</div>
+<!-- Address Bar -->
+<div class="flex flex-col gap-stack-xs">
+<span class="font-label-caps text-[10px] text-outline uppercase tracking-tighter ml-1">Destination Hash</span>
+<div class="flex items-center gap-stack-sm bg-surface-container-lowest border border-outline-variant p-2 rounded-lg group">
+<div class="flex-1 px-2 py-1 font-technical-sm text-technical-sm text-on-surface truncate">
+              0x1a2b...7c8d8f92e3a1b0c9d8e7f6
+            </div>
+<button class="flex items-center justify-center p-2 rounded-md hover:bg-[#1E1B19] text-primary transition-colors focus:outline-none focus:amber-glow" onclick="handleInteraction(this)">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex gap-stack-md pt-stack-sm">
+<button class="flex-1 bg-primary-container text-surface-dim font-label-caps text-label-caps py-4 rounded-lg transition-all hard-shadow active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:bg-primary-fixed-dim" onclick="handleInteraction(this)">
+          AUTHENTICATE TRANSACTION
+        </button>
+<button class="px-6 border border-outline-variant text-on-surface font-label-caps text-label-caps py-4 rounded-lg transition-all hard-shadow active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:bg-surface-variant" onclick="handleInteraction(this)">
+          CLOSE
+        </button>
+</div>
+<!-- Sub-Technical Info -->
+<div class="flex justify-between border-t border-outline-variant pt-stack-sm mt-stack-xs">
+<div class="flex gap-stack-md">
+<span class="font-technical-sm text-[11px] text-outline">LATENCY: 12ms</span>
+<span class="font-technical-sm text-[11px] text-outline">GATEWAY: AMB-01</span>
+</div>
+<span class="font-technical-sm text-[11px] text-primary-container/60">ENCRYPTED SESSION</span>
+</div>
+</div>
+</div>
+<script>
+    function handleInteraction(el) {
+      el.classList.add('pressed');
+      setTimeout(() => {
+        el.classList.remove('pressed');
+      }, 100);
+
+      if (el.innerHTML.includes('content_copy')) {
+        const icon = el.querySelector('.material-symbols-outlined');
+        icon.innerHTML = 'check';
+        icon.classList.add('text-[#10B981]');
+        setTimeout(() => {
+          icon.innerHTML = 'content_copy';
+          icon.classList.remove('text-[#10B981]');
+        }, 2000);
+      }
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      const modal = document.getElementById('modal');
+      const x = (window.innerWidth / 2 - e.pageX) / 50;
+      const y = (window.innerHeight / 2 - e.pageY) / 50;
+      modal.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+  </script>
+</body></html>

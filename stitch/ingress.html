@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catch402 | Ingress Telemetry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Hanken+Grotesk:wght@400&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #141312;
+            color: #e6e1df;
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tactile-card {
+            box-shadow: 1px 1px 0px #23211F, 2px 2px 0px #141211;
+            transition: all 0.1s ease;
+        }
+        .tactile-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f0e0d;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #23211F;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#ffb781",
+                      "tertiary-container": "#00b2fd",
+                      "secondary-fixed": "#e7e1de",
+                      "on-error": "#690005",
+                      "error-container": "#93000a",
+                      "surface-container": "#211f1e",
+                      "primary-fixed": "#ffdcc4",
+                      "outline-variant": "#574335",
+                      "on-primary-container": "#613000",
+                      "on-primary": "#4e2600",
+                      "surface-variant": "#363433",
+                      "on-secondary-fixed": "#1d1b19",
+                      "on-secondary": "#32302e",
+                      "on-surface": "#e6e1df",
+                      "tertiary": "#8aceff",
+                      "on-primary-fixed-variant": "#6f3800",
+                      "surface-bright": "#3b3937",
+                      "primary": "#ffb781",
+                      "tertiary-fixed": "#c9e6ff",
+                      "on-tertiary-fixed-variant": "#004c6e",
+                      "inverse-on-surface": "#32302f",
+                      "surface-container-lowest": "#0f0e0d",
+                      "on-error-container": "#ffdad6",
+                      "surface-dim": "#141312",
+                      "secondary-fixed-dim": "#cbc5c2",
+                      "surface-container-highest": "#363433",
+                      "surface-tint": "#ffb781",
+                      "secondary": "#cbc5c2",
+                      "on-primary-fixed": "#2f1400",
+                      "error": "#ffb4ab",
+                      "surface-container-low": "#1d1b1a",
+                      "on-surface-variant": "#dec1ae",
+                      "inverse-surface": "#e6e1df",
+                      "on-secondary-container": "#bcb7b4",
+                      "background": "#141312",
+                      "outline": "#a58c7b",
+                      "on-background": "#e6e1df",
+                      "on-tertiary": "#00344d",
+                      "on-tertiary-container": "#004160",
+                      "inverse-primary": "#924c00",
+                      "primary-container": "#ff8800",
+                      "secondary-container": "#4b4846",
+                      "surface": "#141312",
+                      "on-secondary-fixed-variant": "#494644",
+                      "surface-container-high": "#2b2a28",
+                      "on-tertiary-fixed": "#001e2f",
+                      "tertiary-fixed-dim": "#8aceff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "gutter-mobile": "16px",
+                      "stack-xl": "48px",
+                      "margin-desktop": "40px",
+                      "stack-lg": "24px",
+                      "stack-xs": "4px",
+                      "stack-md": "16px",
+                      "margin-mobile": "20px",
+                      "gutter-desktop": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Outfit"],
+                      "headline-md": ["Outfit"],
+                      "label-caps": ["Space Grotesk"],
+                      "headline-lg": ["Outfit"],
+                      "input-text": ["Space Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-xl": ["Outfit"],
+                      "technical-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "input-text": ["16px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "technical-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background">
+<header class="fixed top-0 left-0 right-0 h-[64px] z-50 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-gutter-desktop">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-md text-headline-md text-primary bg-surface-container-highest p-1 rounded-sm">Catch402</span>
+<div class="hidden md:flex items-center gap-stack-lg ml-gutter-desktop">
+<span class="font-label-caps text-label-caps text-primary font-bold">DASHBOARD</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant transition-colors p-1 cursor-pointer">NETWORK</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant hover:bg-surface-variant transition-colors p-1 cursor-pointer">RESOURCES</span>
+</div>
+</div>
+<div class="flex items-center gap-gutter-desktop">
+<div class="flex items-center bg-surface-container-low px-stack-md py-stack-xs border border-outline-variant rounded-full gap-stack-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance_wallet</span>
+<span class="font-technical-sm text-technical-sm text-on-surface">402.00 USDC</span>
+</div>
+<div class="flex items-center gap-stack-sm">
+<div class="text-right hidden sm:block">
+<p class="font-technical-sm text-technical-sm text-on-surface leading-none">npub1v7...9a2</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Administrator</p>
+</div>
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant">account_circle</span>
+</div>
+</div>
+</header>
+<div class="flex h-screen pt-[64px]">
+<aside class="fixed left-0 top-[64px] h-[calc(100vh-64px)] w-[256px] bg-surface-dim border-r border-outline-variant flex flex-col py-stack-md z-40 hidden md:flex">
+<div class="px-stack-lg mb-stack-xl">
+<h2 class="text-primary font-headline-md">System Console</h2>
+<p class="font-technical-sm text-technical-sm text-on-surface-variant opacity-60">npub1...trun</p>
+</div>
+<nav class="flex-1 space-y-stack-xs px-stack-sm">
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md bg-surface-variant border-l-2 border-primary text-on-surface font-bold scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant bg-transparent hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-label-caps text-label-caps">Route Watches</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant bg-transparent hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-caps text-label-caps">Logs</span>
+</a>
+<a class="flex items-center gap-stack-md px-stack-md py-stack-md text-on-surface-variant bg-transparent hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+</nav>
+<div class="px-stack-lg pt-stack-md border-t border-outline-variant/30">
+<div class="bg-surface-container-highest p-stack-md rounded-lg tactile-card border border-outline-variant">
+<p class="font-label-caps text-[10px] text-primary mb-1">SYSTEM UPTIME</p>
+<p class="font-technical-sm text-technical-sm">1,242:12:09</p>
+</div>
+</div>
+</aside>
+<main class="flex-1 md:ml-[256px] p-gutter-desktop overflow-y-auto custom-scrollbar">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-lg mb-stack-xl">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-stack-xs">Ingress Telemetry</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Real-time monitoring of resource access derivations and coordinate verification across the Catch402 distributed mesh.</p>
+</div>
+<button class="bg-primary-container text-on-primary font-label-caps text-label-caps px-stack-lg py-stack-md rounded-xl tactile-card flex items-center gap-stack-sm uppercase tracking-widest">
+<span class="material-symbols-outlined">add_circle</span>
+                    Create Watch
+                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter-desktop mb-stack-xl">
+<div class="bg-surface-container-low border border-outline-variant p-stack-lg tactile-card">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-stack-sm">ACTIVE WATCHES</p>
+<p class="font-headline-lg text-headline-lg text-primary">03</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-stack-lg tactile-card">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-stack-sm">TOTAL DERIVATIONS</p>
+<p class="font-headline-lg text-headline-lg text-on-surface">1,402</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-stack-lg tactile-card">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-stack-sm">NODES VERIFIED</p>
+<p class="font-headline-lg text-headline-lg text-tertiary">98.2%</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-stack-lg tactile-card">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-stack-sm">HEALTH STATUS</p>
+<div class="flex items-center gap-stack-sm">
+<span class="status-dot bg-[#10B981] animate-pulse"></span>
+<p class="font-headline-lg text-headline-lg text-[#10B981]">STABLE</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-dim border border-outline-variant overflow-hidden tactile-card">
+<div class="bg-[#0A0908] px-stack-lg py-stack-md border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-label-caps text-label-caps text-on-surface">Active Telemetry Stream</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] cursor-pointer hover:text-primary transition-colors">refresh</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#0A0908]">
+<th class="px-stack-lg py-stack-md font-label-caps text-[11px] text-on-surface-variant border-b border-outline-variant">RESOURCE PATH</th>
+<th class="px-stack-lg py-stack-md font-label-caps text-[11px] text-on-surface-variant border-b border-outline-variant">INDEX</th>
+<th class="px-stack-lg py-stack-md font-label-caps text-[11px] text-on-surface-variant border-b border-outline-variant">DERIVED COORDINATES</th>
+<th class="px-stack-lg py-stack-md font-label-caps text-[11px] text-on-surface-variant border-b border-outline-variant">TARGET AMT</th>
+<th class="px-stack-lg py-stack-md font-label-caps text-[11px] text-on-surface-variant border-b border-outline-variant">STATUS</th>
+<th class="px-stack-lg py-stack-md font-label-caps text-[11px] text-on-surface-variant border-b border-outline-variant text-right">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#23211F]">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-on-surface">/api/v1/user</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-[#FF8800]">#0</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<div class="flex items-center gap-stack-sm bg-surface-container-lowest w-fit px-stack-sm py-1 rounded border border-outline-variant cursor-pointer active:bg-primary-container" onclick="copyToClipboard('0x71...4A2')">
+<span class="font-technical-sm text-[12px] text-on-surface-variant">0x71...4A2</span>
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</div>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-[#10B981]">1,200.00</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<div class="flex items-center gap-2 px-stack-md py-1 rounded-full bg-[#10B981]/10 w-fit">
+<span class="status-dot bg-[#10B981]"></span>
+<span class="font-label-caps text-[10px] text-[#10B981]">VERIFIED</span>
+</div>
+</td>
+<td class="px-stack-lg py-stack-lg text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-on-surface">/v1/stream/pro</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-[#FF8800]">#1</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<div class="flex items-center gap-stack-sm bg-surface-container-lowest w-fit px-stack-sm py-1 rounded border border-outline-variant cursor-pointer active:bg-primary-container">
+<span class="font-technical-sm text-[12px] text-on-surface-variant">0xAF...C31</span>
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</div>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-[#10B981]">550.00</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<div class="flex items-center gap-2 px-stack-md py-1 rounded-full bg-surface-container-highest w-fit">
+<span class="status-dot bg-on-surface-variant"></span>
+<span class="font-label-caps text-[10px] text-on-surface-variant">PENDING</span>
+</div>
+</td>
+<td class="px-stack-lg py-stack-lg text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-on-surface">/cdn/assets/model.glb</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-[#FF8800]">#2</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<div class="flex items-center gap-stack-sm bg-surface-container-lowest w-fit px-stack-sm py-1 rounded border border-outline-variant cursor-pointer active:bg-primary-container">
+<span class="font-technical-sm text-[12px] text-on-surface-variant">0x00...E9F</span>
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</div>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<span class="font-technical-sm text-technical-sm text-[#10B981]">89.50</span>
+</td>
+<td class="px-stack-lg py-stack-lg">
+<div class="flex items-center gap-2 px-stack-md py-1 rounded-full bg-[#10B981]/10 w-fit">
+<span class="status-dot bg-[#10B981]"></span>
+<span class="font-label-caps text-[10px] text-[#10B981]">VERIFIED</span>
+</div>
+</td>
+<td class="px-stack-lg py-stack-lg text-right">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-surface-container-lowest p-stack-md border-t border-outline-variant flex justify-between items-center">
+<p class="font-technical-sm text-[12px] text-on-surface-variant italic">Showing 3 active derivations found in local vault.</p>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-stack-md py-1 text-[12px] font-label-caps border border-outline-variant hover:bg-primary hover:text-black transition-colors">PREV</button>
+<button class="bg-surface-container-high px-stack-md py-1 text-[12px] font-label-caps border border-outline-variant hover:bg-primary hover:text-black transition-colors">NEXT</button>
+</div>
+</div>
+</div>
+<div class="mt-gutter-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop">
+<div class="md:col-span-2 bg-surface-dim border border-outline-variant h-64 relative overflow-hidden tactile-card group">
+<div class="absolute inset-0 opacity-40 group-hover:scale-105 transition-transform duration-1000">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCBSyJzpqtv7LvZU1GrwMLWRtTAblFMu5KzzRR7_6uzgHjnjnn7yDSU8TqMIqWInbPmxpHAqI-198YxwuZGNO5-uB8paWhMsI_jCOq44UBpzrp_UQwf8X8X0AWBKQ3f-X0vged94RVzHBU30CuWoGRN_5-HDbYEokwdP4E10rm4QTtj5vV4or4QEJI3ziQ2V_wQr2hnI-qryGJ5H2W6W0rcITeLFIsmCDPk-BolW7CrUE4b2XuLqDBwSg')"></div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent pointer-events-none"></div>
+<div class="absolute bottom-stack-md left-stack-md">
+<h4 class="font-label-caps text-label-caps text-primary">NODE TOPOLOGY</h4>
+<p class="font-technical-sm text-[12px] text-on-surface opacity-80">Global Latency Distribution (42ms Avg)</p>
+</div>
+<div class="absolute top-stack-md right-stack-md bg-background/80 backdrop-blur-md p-stack-sm border border-outline-variant text-[10px] font-technical-sm flex flex-col gap-1">
+<div class="flex items-center gap-2"><span class="w-2 h-2 bg-primary"></span> ACTIVE HUB</div>
+<div class="flex items-center gap-2"><span class="w-2 h-2 bg-tertiary"></span> RELAY NODE</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-stack-lg tactile-card flex flex-col justify-between">
+<div>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-stack-md">SYSTEM LOGS</h4>
+<div class="space-y-stack-sm overflow-hidden">
+<p class="font-technical-sm text-[11px] text-[#10B981] truncate">14:02:01 &gt;&gt; DERIVATION_SUCCESS /user/index_0</p>
+<p class="font-technical-sm text-[11px] text-primary truncate">14:01:58 &gt;&gt; FETCHING_ASSET model.glb</p>
+<p class="font-technical-sm text-[11px] text-on-surface-variant truncate opacity-50">14:01:45 &gt;&gt; HEARTBEAT_PULSE (256ms)</p>
+<p class="font-technical-sm text-[11px] text-[#FF8800] truncate">14:01:32 &gt;&gt; WARNING: HIGH_TRAFFIC /stream/pro</p>
+</div>
+</div>
+<button class="w-full mt-stack-lg py-stack-sm bg-surface-variant hover:bg-primary-container hover:text-on-primary font-label-caps text-[10px] tracking-widest border border-outline-variant transition-all">VIEW FULL TERMINAL</button>
+</div>
+</div>
+</main>
+</div>
+<script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                console.log('Copied:', text);
+            });
+        }
+        document.querySelectorAll('.tactile-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translate(-1px, -1px)';
+                card.style.boxShadow = '2px 2px 0px #23211F, 4px 4px 0px #141211';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translate(0px, 0px)';
+                card.style.boxShadow = '1px 1px 0px #23211F, 2px 2px 0px #141211';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Catch402 | Settings - Egress Telemetry</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Hanken+Grotesk:wght@400;500&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb781",
+                        "tertiary-container": "#00b2fd",
+                        "secondary-fixed": "#e7e1de",
+                        "on-error": "#690005",
+                        "error-container": "#93000a",
+                        "surface-container": "#211f1e",
+                        "primary-fixed": "#ffdcc4",
+                        "outline-variant": "#574335",
+                        "on-primary-container": "#613000",
+                        "on-primary": "#4e2600",
+                        "surface-variant": "#363433",
+                        "on-secondary-fixed": "#1d1b19",
+                        "on-secondary": "#32302e",
+                        "on-surface": "#e6e1df",
+                        "tertiary": "#8aceff",
+                        "on-primary-fixed-variant": "#6f3800",
+                        "surface-bright": "#3b3937",
+                        "primary": "#ffb781",
+                        "tertiary-fixed": "#c9e6ff",
+                        "on-tertiary-fixed-variant": "#004c6e",
+                        "inverse-on-surface": "#32302f",
+                        "surface-container-lowest": "#0f0e0d",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#141312",
+                        "secondary-fixed-dim": "#cbc5c2",
+                        "surface-container-highest": "#363433",
+                        "surface-tint": "#ffb781",
+                        "secondary": "#cbc5c2",
+                        "on-primary-fixed": "#2f1400",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#1d1b1a",
+                        "on-surface-variant": "#dec1ae",
+                        "inverse-surface": "#e6e1df",
+                        "on-secondary-container": "#bcb7b4",
+                        "background": "#141312",
+                        "outline": "#a58c7b",
+                        "on-background": "#e6e1df",
+                        "on-tertiary": "#00344d",
+                        "on-tertiary-container": "#004160",
+                        "inverse-primary": "#924c00",
+                        "primary-container": "#ff8800",
+                        "secondary-container": "#4b4846",
+                        "surface": "#141312",
+                        "on-secondary-fixed-variant": "#494644",
+                        "surface-container-high": "#2b2a28",
+                        "on-tertiary-fixed": "#001e2f",
+                        "tertiary-fixed-dim": "#8aceff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "gutter-mobile": "16px",
+                        "stack-xl": "48px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "24px",
+                        "stack-xs": "4px",
+                        "stack-md": "16px",
+                        "margin-mobile": "20px",
+                        "gutter-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-lg": ["Outfit"],
+                        "input-text": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Outfit"],
+                        "technical-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "input-text": ["16px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "technical-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .hard-shadow {
+            box-shadow: 1px 1px 0px #23211F, 2px 2px 0px #141211;
+        }
+        .active-press:active {
+            transform: translate(2px, 2px);
+            box-shadow: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0A0908;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #23211F;
+        }
+        @keyframes pulse-amber {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-status {
+            animation: pulse-amber 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<header class="fixed top-0 left-0 right-0 h-[64px] z-50 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-gutter-desktop">
+<div class="flex items-center gap-stack-md">
+<div class="font-headline-md text-headline-md text-primary bg-surface-container-highest p-1 rounded-sm">Catch402</div>
+<nav class="hidden md:flex items-center gap-stack-lg ml-stack-xl">
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors px-3 py-1 rounded" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:bg-surface-variant transition-colors px-3 py-1 rounded" href="#">Route Watches</a>
+<a class="text-primary font-bold transition-all" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-variant p-2 rounded transition-colors">account_circle</button>
+</div>
+</header>
+<aside class="hidden md:flex fixed left-0 top-[64px] h-[calc(100vh-64px)] w-[256px] bg-surface-dim border-r border-outline-variant flex-col py-stack-md">
+<div class="px-gutter-desktop mb-stack-lg">
+<h2 class="text-primary font-headline-md">System Console</h2>
+<p class="text-on-surface-variant font-technical-sm text-technical-sm truncate">npub1...trun</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-stack-md px-gutter-desktop py-3 text-on-surface-variant bg-transparent hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">DASHBOARD</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter-desktop py-3 text-on-surface-variant bg-transparent hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-label-caps text-label-caps">ROUTE WATCHES</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter-desktop py-3 text-on-surface-variant bg-transparent hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-caps text-label-caps">LOGS</span>
+</a>
+<a class="flex items-center gap-stack-md px-gutter-desktop py-3 bg-surface-variant border-l-2 border-primary text-on-surface font-bold scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">SETTINGS</span>
+</a>
+</nav>
+</aside>
+<main class="md:ml-[256px] pt-[64px] min-h-screen">
+<div class="max-w-[1200px] mx-auto p-gutter-desktop space-y-stack-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md border-b border-[#23211F] pb-stack-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Egress Telemetry</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Configure callback sinks and simulate 402 paywall cycles.</p>
+</div>
+<div class="flex items-center gap-stack-sm">
+<span class="flex h-2 w-2 rounded-full bg-primary animate-status"></span>
+<span class="font-technical-sm text-technical-sm text-primary uppercase">System Active</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-desktop">
+<section class="bg-surface-container-low p-stack-lg rounded border border-outline-variant hard-shadow">
+<div class="flex items-center gap-stack-sm mb-stack-md">
+<span class="material-symbols-outlined text-primary">webhook</span>
+<h3 class="font-label-caps text-label-caps text-on-surface">EGRESS PANEL A: WEBHOOKS</h3>
+</div>
+<div class="space-y-stack-md">
+<div class="space-y-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">ENDPOINT URL</label>
+<input class="w-full bg-[#0A0908] border border-[#23211F] rounded px-stack-md py-stack-sm font-input-text text-input-text text-on-surface focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" placeholder="https://api.yourdomain.com/v1/egress" type="text"/>
+</div>
+<div class="flex items-center justify-between">
+<p class="font-technical-sm text-technical-sm text-on-surface-variant">Events: payment_received, route_triggered</p>
+<button class="bg-surface-container-high border border-[#23211F] text-on-surface px-4 py-2 rounded font-label-caps text-label-caps hard-shadow active-press">TEST</button>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low p-stack-lg rounded border border-outline-variant hard-shadow">
+<div class="flex items-center gap-stack-sm mb-stack-md">
+<span class="material-symbols-outlined text-primary">sensors</span>
+<h3 class="font-label-caps text-label-caps text-on-surface">EGRESS PANEL B: NOSTR RELAY</h3>
+</div>
+<div class="space-y-stack-md">
+<div class="space-y-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">RELAY LIST (WSS://)</label>
+<textarea class="w-full bg-[#0A0908] border border-[#23211F] rounded px-stack-md py-stack-sm font-input-text text-input-text text-on-surface focus:outline-none focus:ring-1 focus:ring-primary-container transition-all custom-scrollbar" placeholder="wss://relay.damus.io
+wss://nos.lol" rows="2"></textarea>
+</div>
+<div class="flex items-center gap-stack-sm">
+<input class="bg-[#0A0908] border-[#23211F] text-primary focus:ring-0 rounded" id="nostr_auth" type="checkbox"/>
+<label class="font-technical-sm text-technical-sm text-on-surface-variant" for="nostr_auth">Sign events with local NSEC</label>
+</div>
+</div>
+</section>
+</div>
+<section class="bg-[#141211] p-stack-lg rounded border border-outline-variant hard-shadow relative overflow-hidden">
+<div class="absolute right-0 top-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]">terminal</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-stack-sm mb-stack-lg">
+<span class="material-symbols-outlined text-primary">play_circle</span>
+<h3 class="font-label-caps text-label-caps text-on-surface">PLAYBACK SANDBOX</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-desktop">
+<div class="md:col-span-1 space-y-stack-lg">
+<div class="space-y-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">WATCHED PATH</label>
+<select class="w-full bg-[#0A0908] border border-[#23211F] rounded px-stack-md py-stack-sm font-input-text text-input-text text-on-surface focus:outline-none">
+<option>/api/v1/data/route-01</option>
+<option>/api/v1/metrics/route-02</option>
+<option>/ws/stream/route-03</option>
+</select>
+</div>
+<div class="space-y-stack-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">MOCK TRANSACTION (HEX)</label>
+<div class="relative">
+<input class="w-full bg-[#0A0908] border border-[#23211F] rounded px-stack-md py-stack-sm font-technical-sm text-technical-sm text-primary-fixed-dim focus:outline-none" placeholder="0x..." type="text"/>
+<span class="absolute right-3 top-2 text-[16px] material-symbols-outlined text-on-surface-variant">fingerprint</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-surface-container-lowest font-headline-md text-headline-md py-stack-md rounded-lg hard-shadow active-press transition-all flex items-center justify-center gap-stack-sm" id="generateBtn">
+<span>Generate 402 Paywall spec</span>
+</button>
+</div>
+<div class="md:col-span-2 bg-[#0A0908] border border-[#23211F] rounded-lg p-stack-md flex flex-col min-h-[300px]">
+<div class="flex justify-between items-center border-b border-[#23211F] pb-stack-sm mb-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant">LOGS &amp; VERIFICATION</span>
+<div class="flex gap-stack-sm">
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+</div>
+</div>
+<div class="flex-grow font-technical-sm text-technical-sm space-y-2 overflow-y-auto custom-scrollbar pr-2" id="logTerminal">
+<div class="flex gap-stack-sm text-on-surface-variant">
+<span class="text-primary opacity-50">[09:44:01]</span>
+<span>Sandbox environment initialized. Waiting for payload...</span>
+</div>
+<div class="flex gap-stack-sm text-on-surface-variant">
+<span class="text-primary opacity-50">[09:44:05]</span>
+<span>Handshake with wss://relay.damus.io established.</span>
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-[#23211F] flex items-center justify-between">
+<div class="flex items-center gap-stack-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STATUS:</span>
+<div class="flex items-center gap-stack-xs px-3 py-1 rounded bg-surface-variant text-on-surface-variant transition-all duration-500" id="statusIndicator">
+<span class="material-symbols-outlined text-[16px]">hourglass_empty</span>
+<span class="font-technical-sm text-technical-sm">Pending</span>
+</div>
+</div>
+<div class="text-on-surface-variant font-technical-sm">
+                                    Latency: <span class="text-primary">12ms</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="space-y-stack-md">
+<h4 class="font-label-caps text-label-caps text-on-surface">RECENT SANDBOX GENERATIONS</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#23211F]">
+<th class="py-stack-sm font-label-caps text-label-caps text-on-surface-variant">ID</th>
+<th class="py-stack-sm font-label-caps text-label-caps text-on-surface-variant">PATH</th>
+<th class="py-stack-sm font-label-caps text-label-caps text-on-surface-variant">SATS</th>
+<th class="py-stack-sm font-label-caps text-label-caps text-on-surface-variant">STATE</th>
+<th class="py-stack-sm font-label-caps text-label-caps text-on-surface-variant">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="font-technical-sm text-technical-sm">
+<tr class="border-b border-[#23211F] hover:bg-surface-container-low transition-colors group">
+<td class="py-stack-md text-primary">#402-9A21</td>
+<td class="py-stack-md">/api/v1/metrics/route-02</td>
+<td class="py-stack-md">2,100</td>
+<td class="py-stack-md">
+<span class="bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-full">VERIFIED</span>
+</td>
+<td class="py-stack-md">
+<button class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</button>
+</td>
+</tr>
+<tr class="border-b border-[#23211F] hover:bg-surface-container-low transition-colors group">
+<td class="py-stack-md text-primary">#402-1B55</td>
+<td class="py-stack-md">/ws/stream/route-03</td>
+<td class="py-stack-md">5,500</td>
+<td class="py-stack-md">
+<span class="bg-on-surface-variant/10 text-on-surface-variant border border-on-surface-variant/20 px-2 py-0.5 rounded-full">EXPIRED</span>
+</td>
+<td class="py-stack-md">
+<button class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">open_in_new</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>
