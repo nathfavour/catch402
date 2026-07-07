@@ -198,19 +198,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Built on Stack */}
-      <section className="py-20 px-6 border-t border-hairline bg-bedrock/30">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl font-bold mb-12">System Stack</h2>
-          <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-             <div className="flex items-center gap-2 text-2xl font-bold">Next.js Edge</div>
-             <div className="flex items-center gap-2 text-2xl font-bold">Appwrite Functions</div>
-             <div className="flex items-center gap-2 text-2xl font-bold">Viem / Nostr</div>
-             <div className="flex items-center gap-2 text-2xl font-bold">Tailwind v4</div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-hairline bg-void text-neutral-500 text-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
@@ -222,12 +209,12 @@ export default function LandingPage() {
           </div>
           
           <div className="flex gap-8">
-            <Link href="https://nostr.com" className="hover:text-white">Nostr</Link>
-            <Link href="https://github.com" className="hover:text-white">GitHub</Link>
-            <Link href="/ARCHITECTURE.md" className="hover:text-white">Protocol Specification</Link>
+            <Link href="https://nostr.com" className="hover:text-white">Community</Link>
+            <Link href="https://github.com" className="hover:text-white">Source</Link>
+            <Link href="/ARCHITECTURE.md" className="hover:text-white">Documentation</Link>
           </div>
           
-          <div>Licensed under AGPLv3. © 2026 Catch402. All rights reserved.</div>
+          <div>© 2026 Catch402. All rights reserved.</div>
         </div>
       </footer>
     </div>

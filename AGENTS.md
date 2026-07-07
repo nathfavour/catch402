@@ -1,4 +1,4 @@
-# AGENTS.md - Coding Guidelines for SettleDaddy
+# AGENTS.md - Coding Guidelines for Catch402
 
 ## Build/Test/Lint Commands
 - **Dev**: `npm run dev` (Next.js with Turbopack)
@@ -6,16 +6,16 @@
 - **Lint**: `npm run lint`
 - **Type Check**: `npx tsc --noEmit`
 
-## 🏗️ Architectural Mandates (SettleDaddy Core)
+## 🏗️ Architectural Mandates (Catch402 Core)
 
 ### 🚫 IMMUTABLE FILES & API STRATEGY
-- **No internal APIs**: DO NOT introduce new HTTP API routes/endpoints (`src/app/api/*`, `route.ts`) for in-app flows. SettleDaddy keeps zero extra attack surface and no unnecessary latency.
+- **No internal APIs**: DO NOT introduce new HTTP API routes/endpoints (`src/app/api/*`, `route.ts`) for in-app flows. Catch402 keeps zero extra attack surface and no unnecessary latency.
 - **Prefer Internal Methods**: Use existing in-process functions, Server Actions, and SDK helpers instead of exposing new API surfaces.
 - **Data Consolidation**: When returning shaped payloads to hydrate multiple UI widgets, use Server Actions or consolidated internal service methods.
 
-### 🛑 MANDATORY SOURCE CONTROL RESTRICTIONS
-- **NO GIT COMMITS**: DO NOT run `git commit`, `git add`, `git stage`, `git push`, or `git merge`. You are strictly forbidden from altering the repository index or history.
-- **ZERO STAGING**: Never stage changes. All modifications must remain in the working directory only.
+### ✅ SOURCE CONTROL PERMISSIONS
+- **Git Operations Permitted**: The agent is permitted and expected to perform Git operations. After implementing any fix or feature, the agent must consolidate the modifications, perform a commit with a descriptive message, and push the changes immediately.
+- **Pure Commit Messages (STRICT)**: When committing, NEVER add any co-author metadata (e.g., `Co-authored-by:` headers, names, or emails). Commit messages must contain only the pure commit message description. Leave author identification entirely to the automatic system git configuration.
 
 ### ⚡ Development Standards
 - **Next.js & React**: Implement against Next.js 15+ and React 19+.
